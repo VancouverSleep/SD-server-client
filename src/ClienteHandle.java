@@ -26,11 +26,22 @@ public class ClienteHandle implements Runnable {
 
         try {
             while ((line = in.readLine()) != null) {
+                if(line.equalsIgnoreCase("kill")) {
+                    try {
+                        endConnection();
+                    } catch (IOException e) {
+                        System.out.println("Cliente closed Connection");
+                    }
+                }
                 System.out.println(line);
-                out.println("Server receved: " + line);
+                out.println("Server received: " + line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void endConnection() throws IOException {
+        cliente.close();
     }
 }
