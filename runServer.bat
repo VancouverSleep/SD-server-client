@@ -1,0 +1,1 @@
+java -jar out\artifacts\server\Cliente-Server.jar
